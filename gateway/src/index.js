@@ -11,6 +11,22 @@ app.use(
   })
 )
 
+app.use(
+  '/films',
+  createProxyMiddleware({
+    target: 'http://localhost:3002',
+    changeOrigin: true
+  })
+)
+
+app.use(
+  '/planets',
+  createProxyMiddleware({
+    target: 'http://localhost:3003',
+    changeOrigin: true
+  })
+)
+
 app.listen(3000, () => {
   console.log('Gateway listening on port 3000')
 })
