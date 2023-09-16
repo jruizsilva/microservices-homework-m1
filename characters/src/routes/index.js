@@ -8,9 +8,9 @@ const middlewares = new CharacterMiddlewares()
 
 const router = express.Router()
 
-router.get('/', controllers.getCharacters)
+router.get('/characters', controllers.getCharacters)
 router.post(
-  '/',
+  '/characters',
   middlewares.validate,
   asyncErrorHandler(controllers.createCharacter)
 )

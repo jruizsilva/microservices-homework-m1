@@ -8,9 +8,9 @@ const middlewares = new FilmMiddlewares()
 
 const router = express.Router()
 
-router.get('/', controller.getFilms)
+router.get('/films', controller.getFilms)
 router.post(
-  '/',
+  '/films',
   middlewares.validate,
   asyncErrorHandler(controller.createFilm)
 )
