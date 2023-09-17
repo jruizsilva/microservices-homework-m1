@@ -14,18 +14,16 @@ const PlanetSchema = new Schema({
   films: [{ type: String, ref: 'Film' }]
 })
 
-PlanetSchema.statics.list = async function () {
-  return await this.find().populate('residents').populate('films')
+PlanetSchema.statics.list = function () {
+  return this.find().populate('residents').populate('films')
 }
 
-PlanetSchema.statics.get = async function (id) {
-  return await this.findById(id)
-    .populate('residents')
-    .populate('films')
+PlanetSchema.statics.get = function (id) {
+  return this.findById(id).populate('residents').populate('films')
 }
 
-PlanetSchema.statics.create = async function (planet) {
-  return await this.create(planet)
+PlanetSchema.statics.create = function (planet) {
+  return this.create(planet)
 }
 
 export default PlanetSchema

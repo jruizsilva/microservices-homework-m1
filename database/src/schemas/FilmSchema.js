@@ -11,18 +11,16 @@ const FilmSchema = new Schema({
   planets: [{ type: String, ref: 'Planet' }]
 })
 
-FilmSchema.statics.list = async function () {
-  return await this.find().populate('characters').populate('planets')
+FilmSchema.statics.list = function () {
+  return this.find().populate('characters').populate('planets')
 }
 
-FilmSchema.statics.get = async function (id) {
-  return await this.findById(id)
-    .populate('characters')
-    .populate('planets')
+FilmSchema.statics.get = function (id) {
+  return this.findById(id).populate('characters').populate('planets')
 }
 
-FilmSchema.statics.create = async function (film) {
-  return await this.create(film)
+FilmSchema.statics.create = function (film) {
+  return this.create(film)
 }
 
 export default FilmSchema
