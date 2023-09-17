@@ -14,4 +14,18 @@ const CharacterSchema = new Schema({
   films: [{ type: String, ref: 'Film' }]
 })
 
+CharacterSchema.statics.list = async function () {
+  return await this.find().populate('homeworld').populate('films')
+}
+
+CharacterSchema.statics.get = async function (id) {
+  return await this.findById(id)
+    .populate('homeworld')
+    .populate('films')
+}
+
+CharacterSchema.statics.create = async function (character) {
+  return await this.create(character)
+}
+
 export default CharacterSchema

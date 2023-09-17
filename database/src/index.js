@@ -1,16 +1,23 @@
-import express from 'express'
+// import express from 'express'
 import mongoose from 'mongoose'
 import { envs } from './config'
 import * as schemas from './schemas'
+const conn = mongoose.createConnection(envs.MONGO_URI)
 
-const conn = mongoose.connect(envs.MONGO_URI)
-conn.then(() => {
-  console.log('Connected to MongoDB')
-})
+const Character = conn.model('Character', schemas.CharacterSchema)
+const Film = conn.model('Film', schemas.FilmSchema)
+const Planet = conn.model('Planet', schemas.PlanetSchema)
 
-const app = express()
-const port = 4000
+Character.find()
+  .populate('homeworld')
+  .limit(1)
+  // .exec()
+  .then((res) => {
+    console.log(res)
+  })
 
-app.listen(port, () => {
-  console.log(`Database service is running on port ${port}`)
-})
+export default {
+  Character,
+  Film,
+  Planet
+}
