@@ -6,7 +6,8 @@ class CharacterControllers {
 
   async getCharacters(req, res) {
     const response = await axios.get('/Character')
-    res.json(response)
+    console.log(response.data)
+    res.json(response.data)
   }
   async createCharacter(req, res) {
     throw new CustomError(
