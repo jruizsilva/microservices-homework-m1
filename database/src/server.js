@@ -6,6 +6,10 @@ const server = express()
 
 server.use(morgan('dev'))
 server.use(express.json())
+server.get('/favicon.ico', (req, res) => {
+  res.status(204)
+  res.end()
+})
 server.use(routes)
 
 server.use((err, req, res, next) => {
@@ -13,10 +17,6 @@ server.use((err, req, res, next) => {
   res
     .status(err.status || 500)
     .json({ error: true, message: err.message })
-})
-
-server.use('*', (req, res) => {
-  res.status(404).json({ error: true, message: 'Not found' })
 })
 
 export default server
