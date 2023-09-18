@@ -1,11 +1,11 @@
-import characters from '../data/characters.json'
 import { CustomError } from '../utils'
 
 class CharacterControllers {
   constructor() {}
 
-  getCharacters(req, res) {
-    res.json(characters)
+  async getCharacters(req, res) {
+    const response = await axios.get('/Character')
+    res.json(response)
   }
   async createCharacter(req, res) {
     throw new CustomError(
