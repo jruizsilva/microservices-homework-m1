@@ -12,10 +12,16 @@ router.get(
   '/characters',
   asyncErrorHandler(controllers.getCharacters)
 )
+
+router.get(
+  '/characters/:id',
+  asyncErrorHandler(controllers.getCharacterById)
+)
+
 router.post(
   '/characters',
   middlewares.validate,
-  asyncErrorHandler(controllers.createCharacter)
+  asyncErrorHandler(controllers.insertCharacter)
 )
 
 export default router
