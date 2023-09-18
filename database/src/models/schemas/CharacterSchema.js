@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose'
+import { v4 as uuidv4 } from 'uuid'
 
 const CharacterSchema = new Schema({
   _id: String,
@@ -23,7 +24,9 @@ CharacterSchema.statics.get = function (id) {
 }
 
 CharacterSchema.statics.create = async function (character) {
-  return await this.create(character)
+  character._id = uuidv4()
+  const newCharacter = new this(character)
+  return newCharacter.save()
 }
 
 export default CharacterSchema
