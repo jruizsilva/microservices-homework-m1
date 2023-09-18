@@ -8,7 +8,13 @@ const middlewares = new PlanetMiddlewares()
 
 const router = express.Router()
 
-router.get('/planets', controller.getPlanets)
+router.get('/planets', asyncErrorHandler(controller.getPlanets))
+
+router.get(
+  '/planets/:id',
+  asyncErrorHandler(controller.getPlanetById)
+)
+
 router.post(
   '/planets',
   middlewares.validate,
