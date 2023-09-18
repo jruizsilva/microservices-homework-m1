@@ -1,6 +1,9 @@
 import express from 'express'
 import morgan from 'morgan'
 import routes from './routes'
+import axios from 'axios'
+
+axios.defaults.baseURL = 'http://database:4000'
 
 const app = express()
 app.use(morgan('dev'))
