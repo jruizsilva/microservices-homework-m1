@@ -30,5 +30,5 @@ app.use(
 )
 
 app.listen(3000, () => {
-  console.log('Gateway listening on port 3000')
+  console.log('Gateway listening on http://localhost:3000')
 })
