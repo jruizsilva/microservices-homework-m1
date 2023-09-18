@@ -1,4 +1,5 @@
 import { CustomError } from '../utils'
+import axios from 'axios'
 
 class CharacterControllers {
   constructor() {}
