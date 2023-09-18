@@ -23,10 +23,9 @@ CharacterSchema.statics.get = function (id) {
   return this.findById(id).populate('homeworld').populate('films')
 }
 
-CharacterSchema.statics.create = async function (character) {
+CharacterSchema.statics.insert = function (character) {
   character._id = uuidv4()
-  const newCharacter = new this(character)
-  return newCharacter.save()
+  return this.create(character)
 }
 
 export default CharacterSchema

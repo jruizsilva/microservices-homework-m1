@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose'
+import { v4 as uuidv4 } from 'uuid'
 
 const FilmSchema = new Schema({
   _id: String,
@@ -19,7 +20,8 @@ FilmSchema.statics.get = function (id) {
   return this.findById(id).populate('characters').populate('planets')
 }
 
-FilmSchema.statics.create = function (film) {
+FilmSchema.statics.insert = function (film) {
+  film._id = uuidv4()
   return this.create(film)
 }
 

@@ -23,7 +23,7 @@ router.get(
 router.post(
   '/:model',
   [middlewares.validateModel, middlewares.validate],
-  asyncErrorHandler(controllers.create)
+  asyncErrorHandler(controllers.insert)
 )
 
 export default router

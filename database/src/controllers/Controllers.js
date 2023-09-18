@@ -15,9 +15,9 @@ class Controllers {
     res.json(response)
   }
 
-  async create(req, res) {
+  async insert(req, res) {
     const { model } = req.params
-    const response = await models[model].create(req.body)
+    const response = await models[model].insert(req.body)
     res.json(response)
   }
 }
