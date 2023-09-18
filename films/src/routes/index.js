@@ -8,7 +8,10 @@ const middlewares = new FilmMiddlewares()
 
 const router = express.Router()
 
-router.get('/films', controller.getFilms)
+router.get('/films', asyncErrorHandler(controller.getFilms))
+
+router.get('/films/:id', asyncErrorHandler(controller.getFilmById))
+
 router.post(
   '/films',
   middlewares.validate,

@@ -1,18 +1,22 @@
-import films from '../data/films.json'
-import { CustomError } from '../utils'
+import axios from 'axios'
 
 class FilmController {
   constructor() {}
 
-  getFilms(req, res) {
-    res.json(films)
+  async getFilms(req, res) {
+    const response = await axios.get('/Film')
+    res.json(response.data)
+  }
+  async getFilmById(req, res) {
+    const { id } = req.params
+    const response = await axios.get(`/Film/${id}`)
+    res.json(response.data)
   }
 
   async createFilm(req, res) {
-    throw new CustomError(
-      'Create film method not implemented yet',
-      400
-    )
+    const { title } = req.body
+    const response = await axios.post('/Film', { title })
+    res.json(response.data)
   }
 }
 
