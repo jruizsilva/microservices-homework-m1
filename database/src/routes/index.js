@@ -1,12 +1,16 @@
 import express from 'express'
-import models from '../models'
+import { Middlewares } from '../middlewares'
+import { Controllers } from '../controllers'
+import { asyncErrorHandler } from '../utils'
+
+const middlewares = new Middlewares()
+const controllers = new Controllers()
 
 const router = express.Router()
-// TODO asyncErrorHandler - CustomError
-router.get('/:model', async (req, res) => {
-  const { model } = req.params
-  const response = await models[model].list()
-  res.json(response)
-})
+router.get(
+  '/:model',
+  middlewares.validateModel,
+  asyncErrorHandler(controllers.list)
+)
 
 export default router
