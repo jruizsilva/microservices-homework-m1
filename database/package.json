@@ -5,8 +5,8 @@
   "main": "index.js",
   "baseURL": "./src",
   "scripts": {
-    "build": "babel src -d dist",
-    "start": "npm run build && node dist/index.js",
+    "build": "babel src/index.js -d dist",
+    "start": "babel-node src/index.js",
     "dev": "nodemon --exec babel-node src/index.js"
   },
   "keywords": [],
