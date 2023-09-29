@@ -6,7 +6,7 @@
   "baseURL": "./src",
   "scripts": {
     "build": "babel src/index.js -d dist",
-    "start": "babel-node src/index.js",
+    "start": "node dist/index.js",
     "dev": "nodemon --exec babel-node src/index.js"
   },
   "keywords": [],
